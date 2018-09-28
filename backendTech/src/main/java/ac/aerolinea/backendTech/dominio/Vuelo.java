@@ -6,6 +6,9 @@ public class Vuelo {
 	String destino;
 	double costo;
 	int asientosDisponibles;
+	
+	public Vuelo(){		
+	}
 
 	public String getCodigoVuelo() {
 		return codigoVuelo;

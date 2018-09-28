@@ -3,14 +3,18 @@ package ac.aerolinea.backendTech.dominio;
 import java.util.ArrayList;
 import java.util.List;
 
+import ac.aerolinea.backendTech.dominio.repositorio.RepositorioVuelo;
+
 public class Core {
+	
+	private RepositorioVuelo repositorioVuelo;
+	
+	public Core(RepositorioVuelo repoVuelo){
+		this.repositorioVuelo = repoVuelo;
+	}
 		
-	public List<Vuelo> consultarVuelos() {
-		Vuelo vuelo = new Vuelo();
-		vuelo.setOrigen("Medellin");
-		vuelo.setDestino("Madrid");		
-		List<Vuelo> vuelos = new ArrayList<>();
-		vuelos.add(vuelo);
+	public List<Vuelo> consultarVuelos() {		
+		List<Vuelo> vuelos = repositorioVuelo.consultarVuelos();
 		return vuelos;
 	}
 	
@@ -20,7 +24,7 @@ public class Core {
 	}
 
 	public Vuelo ingresarNuevoVuelo(Vuelo vuelo) {
-		// TODO Auto-generated method stub
-		return null;
+		repositorioVuelo.crearVuelo(vuelo);
+		return vuelo;
 	}
 }
