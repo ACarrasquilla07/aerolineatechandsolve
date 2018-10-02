@@ -1,7 +1,9 @@
-<div class="btn-group cuerpo">
-
-  <input type="button" id="btnPricipal" class="btn btn-dark" value="Ingreso de vuelos"
+<body class = "cuerpo">
+<div class="btn-group">
+  <input type="button" id="btnIngresoVuelos" class="btn btn-primary btn-lg" value="Ingreso de vuelos"
   [routerLinkActive]="'active-link'" [routerLink]="['/ingreso-vuelos']">
+  <input type="button" id="btnListaVuelos" class="btn btn-primary btn-lg" value="Consultar vuelos"
+  [routerLinkActive]="'active-link'" [routerLink]="['/consulta-vuelos']">
 </div>
 <router-outlet></router-outlet>
-
+</body>

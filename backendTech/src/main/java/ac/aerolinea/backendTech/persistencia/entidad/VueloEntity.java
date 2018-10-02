@@ -9,19 +9,16 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 @Entity(name = "Vuelo")
-@NamedQueries({
-	@NamedQuery(name = "Vuelo.findByCodigo", query = "SELECT vuelo FROM Vuelo vuelo WHERE vuelo.codigo = :codigo"),
-	@NamedQuery(name = "Vuelo.findAll", query = "SELECT vuelo from Vuelo vuelo")
+@NamedQueries({	
+	@NamedQuery(name = "Vuelo.findAll", query = "SELECT vuelo from Vuelo vuelo"),
+	@NamedQuery(name = "Vuelo.findById", query = "SELECT vuelo FROM Vuelo vuelo WHERE vuelo.id = :id")
 })
 public class VueloEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
-	@Column
-	public String codigo;
-	
+			
 	@Column
 	public String origen; 
 	
@@ -34,14 +31,6 @@ public class VueloEntity {
 	@Column
 	public int asientosDisponibles;	
 	
-	public String getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
-	}
-
 	public String getOrigen() {
 		return origen;
 	}
@@ -72,5 +61,11 @@ public class VueloEntity {
 
 	public void setAsientosDisponibles(int asientosDisponibles) {
 		this.asientosDisponibles = asientosDisponibles;
+	}
+
+	public Long getId() {
+		return id;
 	}	
+	
+	
 }

@@ -1,0 +1,21 @@
+<body class="cuerpo">
+    <table class="table">
+        <tr>
+            <th>Codigo vuelo</th>
+            <th>Origen</th>
+            <th>Destino</th>
+            <th>Costo</th>
+            <th>Asiento disponibles</th>
+        </tr>
+        <tr *ngFor="let item of vuelos; let i = index">
+            <td>{{item.codigoVuelo}}</td>
+            <td>{{item.origen}}</td>
+            <td>{{item.destino}}</td>
+            <td>{{item.costo}}</td>
+            <td>{{item.asientosDisponibles}}</td>
+            <td>
+                <input type="button" id="btnParaReserva{{i}}" class="btn btn-primary" value="Reservar" (click)="reservarVuelo(i)">
+            </td>
+        </tr>
+    </table>
+</body>

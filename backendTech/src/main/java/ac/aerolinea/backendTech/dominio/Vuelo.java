@@ -7,7 +7,7 @@ public class Vuelo {
 	double costo;
 	int asientosDisponibles;
 	
-	public Vuelo(){		
+	public Vuelo(){
 	}
 
 	public String getCodigoVuelo() {

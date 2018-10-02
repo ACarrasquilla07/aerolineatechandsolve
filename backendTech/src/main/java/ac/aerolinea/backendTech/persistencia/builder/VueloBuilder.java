@@ -11,7 +11,6 @@ public class VueloBuilder {
 	
 	public static VueloEntity convertirAVueloEntity(Vuelo vuelo){
 		VueloEntity vueloEntity = new VueloEntity();
-		vueloEntity.setCodigo(vuelo.getCodigoVuelo());
 		vueloEntity.setOrigen(vuelo.getOrigen());
 		vueloEntity.setDestino(vuelo.getDestino());
 		vueloEntity.setAsientosDisponibles(vuelo.getAsientosDisponibles());
@@ -21,7 +20,7 @@ public class VueloBuilder {
 	
 	public static Vuelo convertirAVuelo(VueloEntity vueloEntity){
 		Vuelo vuelo = new Vuelo();
-		vuelo.setCodigoVuelo(vueloEntity.getCodigo());
+		vuelo.setCodigoVuelo(vueloEntity.getId().toString());
 		vuelo.setDestino(vueloEntity.getDestino());
 		vuelo.setOrigen(vueloEntity.getOrigen());
 		vuelo.setAsientosDisponibles(vueloEntity.getAsientosDisponibles());

@@ -3,18 +3,20 @@ package ac.aerolinea.backendTech.persistencia.repositorio;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 import org.springframework.stereotype.Repository;
+
 import ac.aerolinea.backendTech.dominio.Vuelo;
 import ac.aerolinea.backendTech.dominio.repositorio.RepositorioVuelo;
 import ac.aerolinea.backendTech.persistencia.builder.VueloBuilder;
 import ac.aerolinea.backendTech.persistencia.entidad.VueloEntity;
-import javax.persistence.Query;
 
 @Repository
 public class RepositorioVueloPersistente implements RepositorioVuelo{
 	private static final String VUELOS_FIND="Vuelo.findAll";
+	private static final String VUELOS_FIND_ID ="Vuelo.findById";
 	
 	EntityManager entityManager;
 	
@@ -25,8 +27,7 @@ public class RepositorioVueloPersistente implements RepositorioVuelo{
 	@Override
 	public void crearVuelo(Vuelo vuelo) {
 		VueloEntity vueloEntity = VueloBuilder.convertirAVueloEntity(vuelo);
-		entityManager.persist(vueloEntity);
-		return;
+		entityManager.persist(vueloEntity);		
 	}
 
 	private List<VueloEntity> listarVuelos(){
@@ -38,6 +39,10 @@ public class RepositorioVueloPersistente implements RepositorioVuelo{
 	@Override
 	public List<Vuelo> consultarVuelos() {
 		List<VueloEntity> listaEntity = listarVuelos();
+		return cambiarListaEntityAVuelos(listaEntity);				
+	}
+
+	private List<Vuelo> cambiarListaEntityAVuelos(List<VueloEntity> listaEntity) {
 		List<Vuelo> vuelos = new ArrayList<>();
 		
 		if(listaEntity!=null) {
@@ -45,11 +50,15 @@ public class RepositorioVueloPersistente implements RepositorioVuelo{
 				Vuelo vuelo = VueloBuilder.convertirAVuelo(listaEntity.get(i));
 				vuelos.add(vuelo);  
 			}
-		}		
+		}
 		return vuelos;
 	}
-	
-	
-	
-	
+
+	@Override
+	public Vuelo consultarVuelo(String codigoVuelo) {
+		Query query = entityManager.createNamedQuery(VUELOS_FIND_ID);
+		query.setParameter("id", Long.parseLong(codigoVuelo));
+		VueloEntity vueloEntity = (VueloEntity) query.getSingleResult();		
+		return vueloEntity != null ? VueloBuilder.convertirAVuelo(vueloEntity): null;
+	}
 }

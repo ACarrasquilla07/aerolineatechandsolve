@@ -1,7 +1,6 @@
 package ac.aerolinea.backendTech.rest;
 
 import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,19 +9,22 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import ac.aerolinea.backendTech.dominio.Core;
+import ac.aerolinea.backendTech.dominio.Reserva;
 import ac.aerolinea.backendTech.dominio.Vuelo;
+import ac.aerolinea.backendTech.rest.dto.ReservaDTO;
 
 @EnableAutoConfiguration
 @RestController
 @CrossOrigin
 @Transactional
-@RequestMapping(value="/aerolinea")
+@RequestMapping(value = "/aerolinea")
 public class Controlador {
-	
+
 	@Autowired
 	Core core;
 
@@ -30,11 +32,23 @@ public class Controlador {
 	@ResponseBody
 	public List<Vuelo> listarVuelos() {
 		return core.consultarVuelos();
-	}	
-	
-	@RequestMapping(value = "/crearVuelo", method = RequestMethod.POST)
+	}
+
+	@RequestMapping(value = "/crear-vuelo", method = RequestMethod.POST)
 	@ResponseBody
 	public Vuelo crearLibroServicio(@RequestBody Vuelo vuelo) {
 		return core.ingresarNuevoVuelo(vuelo);
-}
+	}
+	
+	@RequestMapping(value = "/crear-reserva", method = RequestMethod.POST)
+	@ResponseBody
+	public Reserva crearReserva(@RequestBody ReservaDTO reservaDTO) {
+		return core.crearReserva(reservaDTO.getIdCliente(), reservaDTO.getCodigoVuelo());
+	}
+	
+	@RequestMapping(value = "/listareservas", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Reserva> listarReservas(@RequestParam String id) {
+		return core.consultarReservas(id);
+	}	
 }
