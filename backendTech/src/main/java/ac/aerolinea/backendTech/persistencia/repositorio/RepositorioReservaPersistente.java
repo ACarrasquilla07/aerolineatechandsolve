@@ -30,12 +30,12 @@ public class RepositorioReservaPersistente implements RepositorioReserva{
 		return cambiarListaEntityAReserva(listaEntity);		
 	}
 
-	private List<ReservaEntity> listarReservasPorId(String id) {
-		
+	private List<ReservaEntity> listarReservasPorId(String id) {		
 		Query query  = entityManager.createNamedQuery(FIND_BY_ID);
+		query.setParameter("idCliente", id);
 		List<ReservaEntity> resultado = query.getResultList();
 		return !resultado.isEmpty() ? resultado : null;
-	}
+	}	
 	
 	private List<Reserva> cambiarListaEntityAReserva(List<ReservaEntity> listaEntity) {
 		List<Reserva> reservas = new ArrayList<>();

@@ -37,5 +37,13 @@ export class IngresoVuelosService {
             console.log(result);
         }, error => console.log('There was an error: '));
     }
+
+    obtenerVuelosReservados(idCliente: String){
+        return this._http.get(this.url + '/vuelos-reservados?idCliente='+idCliente, this.options).
+        pipe(map((response:Response)=>response.json()),
+        catchError( error => {
+          return ("Error!!!")
+        }));  
+      }
       
 }

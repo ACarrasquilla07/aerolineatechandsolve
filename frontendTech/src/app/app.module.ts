@@ -9,13 +9,15 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { ConsultaVuelosComponent } from './consulta-vuelos/consulta-vuelos.component';
 import { ReservasComponent } from './reservas/reservas.component';
+import { MisReservasComponent } from './mis-reservas/mis-reservas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IngresoVuelosComponent,
     ConsultaVuelosComponent,
-    ReservasComponent
+    ReservasComponent,
+    MisReservasComponent
   ],    
   imports: [
     FormsModule,
@@ -24,7 +26,7 @@ import { ReservasComponent } from './reservas/reservas.component';
     HttpModule,
     HttpClientModule
   ],
-  providers: [IngresoVuelosService ],
+  providers: [IngresoVuelosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 package ac.aerolinea.backendTech.dominio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ac.aerolinea.backendTech.dominio.repositorio.RepositorioVuelo;
@@ -30,11 +31,7 @@ public class Core {
 	}
 
 	public Reserva crearReserva(String idCLiente, String codigoVuelo) {
-		//Vuelo vuelo = validarVuelo(codigoVuelo);
-		Vuelo vuelo = new Vuelo();
-		vuelo.setAsientosDisponibles(100);
-		vuelo.setCodigoVuelo(codigoVuelo);
-		
+		Vuelo vuelo = validarVuelo(codigoVuelo);		
 		Cliente cliente = new Cliente();
 		cliente.setDocumentoIdentidad(idCLiente);
 
@@ -49,6 +46,15 @@ public class Core {
 	public Vuelo validarVuelo(String codigoVuelo) {
 		Vuelo vuelo = repositorioVuelo.consultarVuelo(codigoVuelo);
 		return vuelo.asientosDisponibles == 0 ? null : vuelo;
+	}
+
+	public List<Vuelo> obtenerVuelosReservados(String idCliente) {
+		List<Reserva> reservas = repositorioReserva.consultarReservasPorId(idCliente);
+		List<Vuelo> vuelos = new ArrayList<>();
+		for (Reserva reserva : reservas) {
+			vuelos.add( repositorioVuelo.consultarVuelo(reserva.getVuelo().getCodigoVuelo()) );
+		}
+		return vuelos;
 	}
 
 }

@@ -13,7 +13,7 @@ public class ReservaEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long codigoReserca;
+	private Long codigoReserva;
 
 	@Column
 	private String idCliente;

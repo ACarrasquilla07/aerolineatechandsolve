@@ -1,6 +1,7 @@
 package ac.aerolinea.backendTech.rest;
 
 import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,4 +52,12 @@ public class Controlador {
 	public List<Reserva> listarReservas(@RequestParam String id) {
 		return core.consultarReservas(id);
 	}	
+				
+	@RequestMapping(value = "/vuelos-reservados", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Vuelo> obtenerVuelosReservadosPorId(@RequestParam String idCliente) {
+		return core.obtenerVuelosReservados(idCliente);
+	}
 }
+
+
