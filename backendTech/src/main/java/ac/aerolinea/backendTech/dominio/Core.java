@@ -1,13 +1,18 @@
 package ac.aerolinea.backendTech.dominio;
 
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import ac.aerolinea.backendTech.dominio.repositorio.RepositorioVuelo;
+import ac.aerolinea.backendTech.util.CalculadoraDeEdad;
+import ac.aerolinea.backendTech.util.EdadPersona;
 import ac.aerolinea.backendTech.dominio.repositorio.RepositorioReserva;
 
 public class Core {
 
+	private static final int ANIOS_PERMITIDOS = 18;
 	private RepositorioVuelo repositorioVuelo;
 	private RepositorioReserva repositorioReserva;
 
@@ -28,6 +33,12 @@ public class Core {
 	public Vuelo ingresarNuevoVuelo(Vuelo vuelo) {
 		repositorioVuelo.crearVuelo(vuelo);
 		return vuelo;
+	}
+	
+	public boolean validarCliente(Cliente cliente) throws ParseException{
+		Calendar fechaNacimientoConvertida = CalculadoraDeEdad.convertirDeStringACalendar(cliente.getFechaNacimiento());
+		EdadPersona edadCliente = CalculadoraDeEdad.calcularEdad(Calendar.getInstance(), fechaNacimientoConvertida);		
+		return edadCliente.getAnios() >= ANIOS_PERMITIDOS;
 	}
 
 	public Reserva crearReserva(String idCLiente, String codigoVuelo) {

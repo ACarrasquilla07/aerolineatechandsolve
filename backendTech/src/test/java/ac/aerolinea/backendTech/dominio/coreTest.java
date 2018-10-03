@@ -15,18 +15,13 @@ import ac.aerolinea.backendTech.BackendTechApplication;
 import ac.aerolinea.backendTech.dominio.repositorio.RepositorioReserva;
 import ac.aerolinea.backendTech.dominio.repositorio.RepositorioVuelo;
 
-//@RunWith(SpringRunner.class)
-//@SpringBootTest(classes = { BackendTechApplication.class })
-//@DataJpaTest
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = { BackendTechApplication.class })
+@DataJpaTest
 public class coreTest {
 
-	//@Autowired
+	@Autowired
 	private Core core;
-
-	@Test
-	public void consultarReservasTest() {
-
-	}
 
 	@Test
 	public void crearReservaTest() {

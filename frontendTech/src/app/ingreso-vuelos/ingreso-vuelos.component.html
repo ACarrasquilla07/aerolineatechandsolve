@@ -3,11 +3,8 @@
     <input type="text" class="form-control" placeholder="Destino" [(ngModel)]="this.vuelo.destino"><br>
     <input type="text" class="form-control" placeholder="Origen" [(ngModel)]="this.vuelo.origen"><br>
     <input type="text" class="form-control" placeholder="Costo" [(ngModel)]="this.vuelo.costo"><br>  
-    <input type="text" class="form-control" placeholder="Asientos disponibles" [(ngModel)]="this.vuelo.asientosDisponibles"><br>  
-    <label class="checkbox-inline">
-      Fecha de vuelo: <input type="date" placeholder="dd/mm/yyyy">
-    </label>    
-    <br><br>
+    <input type="text" class="form-control" placeholder="Asientos disponibles" [(ngModel)]="this.vuelo.asientosDisponibles"><br>      
+    <br>
     <input type="button" id="btnPrueba" class="btn btn-dark" value="Registrar vuelo" (click)="crearVuelo()">
   </div>  
 </body>

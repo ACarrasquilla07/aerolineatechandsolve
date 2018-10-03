@@ -1,12 +1,11 @@
 package ac.aerolinea.backendTech.dominio;
 
-import java.util.Calendar;
-
 public class Cliente {
 	String documentoIdentidad;
 	String nombres;
 	String apellidos;
-	Calendar fechaNacimiento;
+	String fechaNacimiento;
+
 
 	public String getDocumentoIdentidad() {
 		return documentoIdentidad;
@@ -32,12 +31,11 @@ public class Cliente {
 		this.apellidos = apellidos;
 	}
 
-	public Calendar getFechaNacimiento() {
+	public String getFechaNacimiento() {
 		return fechaNacimiento;
 	}
-
-	public void setFechaNacimiento(Calendar fechaNacimiento) {
+	
+	public void setFechaNacimiento(String fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
-
 }

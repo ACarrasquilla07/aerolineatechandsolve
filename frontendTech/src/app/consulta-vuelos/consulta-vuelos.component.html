@@ -1,5 +1,13 @@
 <body class="cuerpo">
-    <table class="table">
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Identificación" [(ngModel)]="this.cliente.documentoIdentidad"><br>
+        <input type="text" class="form-control" placeholder="Nombres" [(ngModel)]="this.cliente.nombres"><br>
+        <input type="text" class="form-control" placeholder="Apellidos" [(ngModel)]="this.cliente.apellidos"><br>
+        <label class="checkbox-inline">
+            Fecha de nacimiento: <input type="date" placeholder="dd/mm/yyyy"  [(ngModel)]="this.cliente.fechaNacimiento">
+        </label>        
+    </div>
+    <table class="table cuerpo">
         <tr>
             <th>Codigo vuelo</th>
             <th>Origen</th>

@@ -1,5 +1,6 @@
 package ac.aerolinea.backendTech.rest;
 
+import java.text.ParseException;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import ac.aerolinea.backendTech.dominio.Cliente;
 import ac.aerolinea.backendTech.dominio.Core;
 import ac.aerolinea.backendTech.dominio.Reserva;
 import ac.aerolinea.backendTech.dominio.Vuelo;
@@ -57,6 +59,12 @@ public class Controlador {
 	@ResponseBody
 	public List<Vuelo> obtenerVuelosReservadosPorId(@RequestParam String idCliente) {
 		return core.obtenerVuelosReservados(idCliente);
+	}
+	
+	@RequestMapping(value = "/validar-cliente", method = RequestMethod.POST)
+	@ResponseBody
+	public boolean validarCliente(@RequestBody Cliente cliente) throws ParseException {
+		return core.validarCliente(cliente);
 	}
 }
 
