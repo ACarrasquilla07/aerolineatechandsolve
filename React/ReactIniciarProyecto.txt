@@ -1,0 +1,17 @@
+link: https://facebook.github.io/react-native/docs/getting-started
+
+Para instalar componentes:
+npm install -g create-react-app
+
+Para crear proyecto llamado my-app:
+create-react-app my-app
+
+Para iniciar proyecto:
+cd my-app
+npm start
+
+Para poner bootstrap:
+https://reactstrap.github.io/
+
+Para los servicios REST:c
+npm install axios --save

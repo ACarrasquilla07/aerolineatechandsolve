@@ -1,0 +1,28 @@
+<!doctype html>
+<html ng-app="demo">
+	<head>
+		<title>Hello AngularJS</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    	<script src="hello.js"></script>
+		
+		<link rel="icon" type="image/x-icon" href="favicon.ico">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	</head>
+
+	<body style="margin-top: 50px;    
+		margin-left: 50px;
+		margin-right: 50px;  ">
+		
+		<a class="btn btn-info" href="consultavuelos/consultavuelos.html">Consulta mis vuelos</a>
+		<br><br>
+		
+		<div ng-controller="Hello" class="form-group col-lg-6 col-md-6 ">
+			<p>El origen es {{vuelo.origen}}</p>
+			<p>El destion {{vuelo.destino}}</p>
+			
+			<input type="text" class="form-control" placeholder="Destino" ng-model="destinoText"><br>
+			<input type="text" class="form-control" placeholder="Origen" ng-model="origenText"><br>
+			<button ng-click="guardarVuelo()" class = "btn btn-success">Guardar</button>
+		</div>
+	</body>
+</html>
